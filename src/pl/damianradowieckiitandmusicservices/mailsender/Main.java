@@ -1,8 +1,11 @@
-package pl.damianradowieckiitandmusicservices;
+package pl.damianradowieckiitandmusicservices.mailsender;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.MimeMessage;
+
+import pl.damianradowieckiitandmusicservices.mailsender.builder.MimeMessageBuilder;
+import pl.damianradowieckiitandmusicservices.mailsender.status.SendingStatus;
 
 public class Main {
 
@@ -23,7 +26,7 @@ public class Main {
 		
 		Sender mailSender = new MailSender();
 		
-		Status status = mailSender.send(mimeMessage);
+		SendingStatus status = mailSender.send(mimeMessage);
 			
 		System.out.println(status);
 

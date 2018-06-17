@@ -1,4 +1,4 @@
-package pl.damianradowieckiitandmusicservices;
+package pl.damianradowieckiitandmusicservices.mailsender.builder;
 
 import java.util.Properties;
 
