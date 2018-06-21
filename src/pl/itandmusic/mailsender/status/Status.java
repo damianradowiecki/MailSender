@@ -1,4 +1,4 @@
-package pl.damianradowieckiitandmusicservices.mailsender.status;
+package pl.itandmusic.mailsender.status;
 
 public enum Status {
 	SENT_AND_SAVED_IN_FOLDER,
