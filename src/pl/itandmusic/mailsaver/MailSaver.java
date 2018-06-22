@@ -57,9 +57,9 @@ public class MailSaver implements Saver {
 			
 			Folder folder = store.getDefaultFolder();
 			Folder [] list = folder.list("*");
-			System.out.println("Existing folder on server:");
+			System.out.println("Existing folders on server:");
 			for(Folder f : list) {
-				System.out.println(f.getName() + " | " + f.getFullName());
+				System.out.println(f.getFullName());
 			}
 			folder.close();
 			store.close();
