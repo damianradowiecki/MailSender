@@ -1,5 +1,8 @@
 package pl.itandmusic.mailsaver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.mail.Folder;
 import javax.mail.FolderNotFoundException;
 import javax.mail.Message;
@@ -46,6 +49,7 @@ public class MailSaver implements Saver {
 	}
 	
 	private void showAllFoldersOnServer(MailSaverProperties mailSaverProperties){
+		List<Folder> folders = new ArrayList<>();
 		try {
 			Session session = mailSaverProperties.getSession();
 			String username = mailSaverProperties.getUsername();
@@ -57,14 +61,18 @@ public class MailSaver implements Saver {
 			
 			Folder folder = store.getDefaultFolder();
 			Folder [] list = folder.list("*");
-			System.out.println("Existing folders on server:");
 			for(Folder f : list) {
-				System.out.println(f.getFullName());
+				folders.add(f);
 			}
 			folder.close();
 			store.close();
-		}catch(MessagingException | IllegalStateException exception) {
-			
+		}catch(MessagingException | IllegalStateException exception) {}
+		
+		if(folders.size() > 0) {
+			System.out.println("Existing folders on server:");
+			for(Folder f : folders) {
+				System.out.println(f.getFullName());
+			}
 		}
 	}
 	
