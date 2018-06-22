@@ -1,5 +1,9 @@
 package pl.itandmusic.test;
 
+import javax.mail.MessagingException;
+
+import org.junit.Test;
+
 import junit.framework.TestCase;
 import pl.itandmusic.mailsaver.MailSaver;
 import pl.itandmusic.mailsender.status.SavingInFolderStatus;
@@ -40,8 +44,14 @@ public class MailSaverTest extends TestCase {
 				.build();
 	}
 	
-	public void testMailSaving() {
+	@Test
+	public void testTryToSaveInFolder() {
 		SavingInFolderStatus savingInFolderStatus = mailSaver.tryToSaveInFolder(mailSaverProperties);
 		assertTrue(savingInFolderStatus.equals(SavingInFolderStatus.SAVED));
+	}
+	
+	@Test
+	public void testSaveInFolder() throws MessagingException {
+		mailSaver.saveInFolder(mailSaverProperties);
 	}
 }

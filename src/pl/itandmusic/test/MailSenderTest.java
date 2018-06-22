@@ -1,5 +1,10 @@
 package pl.itandmusic.test;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+import org.junit.Test;
+
 import junit.framework.TestCase;
 import pl.itandmusic.mailsender.MailSender;
 import pl.itandmusic.mailsender.status.SendingStatus;
@@ -30,9 +35,16 @@ public class MailSenderTest extends TestCase{
 		mailSender = new MailSender();
 	}
 	
-	public void testMailSending() {
+	@Test
+	public void testTryToSendMethod() {
 		SendingStatus status = mailSender.tryToSend(mailSenderProperties);
 		assertTrue(status.equals(SendingStatus.SENT));
+	}
+	
+	@Test
+	public void testSendMethod() throws MessagingException {
+		MimeMessage mimeMessage = mailSenderProperties.getMimeMessage();
+		mailSender.send(mimeMessage);
 	}
 	
 }

@@ -23,9 +23,6 @@ public class MailSaver implements Saver {
 			showAllFoldersOnServer(mailSaverProperties);
 			return SavingInFolderStatus.NOT_SAVED;
 		}
-		catch(IllegalStateException e) {
-			return SavingInFolderStatus.SAVED;
-		}
 		catch (MessagingException e) {
 			e.printStackTrace();
 			return SavingInFolderStatus.NOT_SAVED;
@@ -45,7 +42,6 @@ public class MailSaver implements Saver {
 		store.connect(storeHost, username, password);
 		Folder folder = store.getFolder(folderName);
 		folder.appendMessages(new Message[] {mimeMessage});
-		folder.close();
 		store.close();
 	}
 	
